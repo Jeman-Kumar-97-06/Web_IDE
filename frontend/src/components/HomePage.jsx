@@ -1,143 +1,130 @@
-import React, { useState } from "react";
-import { Paperclip } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // <-- make sure you're using react-router
+import Editor from "@monaco-editor/react";
+import { House } from "lucide-react";
 
 export default function HomePage() {
   const [language, setLanguage] = useState("javascript");
-  const [code, setCode] = useState("console.log('Hello, World!')");
+  const [code, setCode] = useState("");
   const [output, setOutput] = useState("");
-  const [chatMessages, setChatMessages] = useState([
-    { role: "ai", text: "Hello! Ask me about your code." },
-  ]);
-  const [chatInput, setChatInput] = useState("");
+  const navigate = useNavigate();
 
-  const runCode = () => {
+  // Simple run handler for JS
+  const handleRun = () => {
     if (language === "javascript") {
       try {
-        // eslint-disable-next-line no-eval
-        const result = eval(code);
-        setOutput(result !== undefined ? result.toString() : "");
+        const result = new Function(code)();
+        setOutput(String(result) || "✅ Code ran with no return value");
       } catch (err) {
-        setOutput(err.toString());
+        setOutput("❌ " + err.toString());
       }
     } else {
-      setOutput(`Execution for ${language} not implemented in demo.`);
+      setOutput(`⚠️ Running ${language} code is not supported yet (need backend)`);
     }
   };
 
-  const sendMessage = () => {
-    if (!chatInput.trim()) return;
-    const newMessages = [...chatMessages, { role: "user", text: chatInput }];
-    // Mock AI response
-    newMessages.push({ role: "ai", text: "(AI response placeholder)" });
-    setChatMessages(newMessages);
-    setChatInput("");
-  };
-
   return (
-    <div className="min-h-screen bg-gray-950 text-white flex flex-col">
-      {/* Header */}
-      <header className="px-6 py-4 bg-gray-900 shadow-md flex justify-between items-center">
-        <Link to='/' className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text">
-          Execute.or
-        </Link>
-        <nav>
-          <a href="#" className="px-4 py-2 hover:text-cyan-400">
-            Home
-          </a>
-          <a href="#" className="px-4 py-2 hover:text-cyan-400">
-            Docs
-          </a>
-          <a href="#" className="px-4 py-2 hover:text-cyan-400">
-            About
-          </a>
-        </nav>
-      </header>
-
-      {/* Main */}
-      <main className="flex-1 flex flex-col md:flex-row overflow-hidden">
-        {/* Code Editor */}
-        <div className="w-full md:w-1/2 p-4 flex flex-col bg-gray-900">
-          <div className="flex gap-4 mb-4 items-center">
-            {[
-              { id: "javascript", label: "JavaScript" },
-              { id: "python", label: "Python" },
-              { id: "c", label: "C" },
-            ].map((lang) => (
-              <button
-                key={lang.id}
-                onClick={() => setLanguage(lang.id)}
-                className={`px-4 py-2 rounded-lg font-semibold transition ${
-                  language === lang.id
-                    ? "bg-cyan-500 text-white"
-                    : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-                }`}
-              >
-                {lang.label}
-              </button>
-            ))}
-            <button className="ml-auto flex items-center gap-2 px-3 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg">
-              <Paperclip className="w-4 h-4" /> Upload
+    <div className="flex h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
+      {/* Left Section */}
+      <div className="w-1/2 flex flex-col border-r border-white/10 bg-white/5 backdrop-blur-md">
+        {/* Toolbar */}
+        <div className="flex items-center justify-between p-3 border-b border-white/10 bg-black/30">
+          {/* Left side: Home + Lang Switch */}
+          <div className="flex items-center space-x-3">
+            {/* Home button */}
+            <button
+              onClick={() => navigate("/")}
+              className="px-3 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 text-white text-sm hover:opacity-90 transition"
+            >
+              <House />
             </button>
-          </div>
-          <textarea
-            className="flex-1 w-full p-4 font-mono text-sm bg-gray-950 text-gray-200 rounded-lg border border-gray-800 focus:outline-none focus:ring-2 focus:ring-cyan-500"
-            value={code}
-            onChange={(e) => setCode(e.target.value)}
-          />
-          <button
-            onClick={runCode}
-            className="mt-4 px-6 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-600 font-semibold shadow-lg self-start"
-          >
-            Run Code
-          </button>
-        </div>
 
-        {/* Output + AI Chat */}
-        <div className="w-full md:w-1/2 p-4 bg-gray-950 border-l border-gray-800 flex flex-col">
-          {/* Output Section */}
-          <div className="flex-1 mb-4">
-            <h2 className="text-xl font-bold mb-2">Output:</h2>
-            <pre className="p-4 bg-gray-900 rounded-lg text-gray-200 whitespace-pre-wrap min-h-[150px]">
-              {output}
-            </pre>
-          </div>
-
-          {/* AI Chat Section */}
-          <div className="h-1/2 flex flex-col border-t border-gray-800 pt-4">
-            <h2 className="text-xl font-bold mb-2">AI Assistant</h2>
-            <div className="flex-1 overflow-y-auto bg-gray-900 rounded-lg p-4 space-y-2">
-              {chatMessages.map((msg, idx) => (
-                <div
-                  key={idx}
-                  className={`p-2 rounded-lg max-w-xs ${
-                    msg.role === "user"
-                      ? "bg-cyan-600 ml-auto text-white"
-                      : "bg-gray-800 text-gray-200"
+            {/* Language Switcher */}
+            <div className="space-x-2">
+              {["javascript", "python", "c"].map((lang) => (
+                <button
+                  key={lang}
+                  className={`px-3 py-1 rounded-lg text-sm transition ${
+                    language === lang
+                      ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white"
+                      : "bg-white/10 text-gray-300 hover:bg-white/20"
                   }`}
+                  onClick={() => setLanguage(lang)}
                 >
-                  {msg.text}
-                </div>
+                  {lang.toUpperCase()}
+                </button>
               ))}
             </div>
-            <div className="mt-2 flex gap-2">
+          </div>
+
+          {/* Right side: Upload + Run */}
+          <div className="flex items-center space-x-2">
+            {/* Upload */}
+            <label className="cursor-pointer px-3 py-1 rounded-lg bg-white/10 hover:bg-white/20 transition text-sm">
+              📎 Upload
               <input
-                type="text"
-                className="flex-1 px-3 py-2 rounded-lg bg-gray-800 text-gray-200 focus:outline-none focus:ring-2 focus:ring-cyan-500"
-                placeholder="Ask AI about your code..."
-                value={chatInput}
-                onChange={(e) => setChatInput(e.target.value)}
+                type="file"
+                className="hidden"
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (ev) => setCode(ev.target?.result || "");
+                    reader.readAsText(file);
+                  }
+                }}
               />
-              <button
-                onClick={sendMessage}
-                className="px-4 py-2 bg-cyan-500 hover:bg-cyan-600 rounded-lg font-semibold"
-              >
-                Send
-              </button>
-            </div>
+            </label>
+
+            {/* Run */}
+            <button
+              onClick={handleRun}
+              className="px-4 py-1 rounded-lg bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:opacity-90 transition"
+            >
+              ▶ Run
+            </button>
           </div>
         </div>
-      </main>
+
+        {/* Editor */}
+        <Editor
+          height="100%"
+          language={language}
+          value={code}
+          onChange={(value) => setCode(value || "")}
+          theme="vs-dark"
+          options={{
+            fontSize: 14,
+            minimap: { enabled: false },
+            automaticLayout: true,
+          }}
+        />
+      </div>
+
+      {/* Right Section */}
+      <div className="w-1/2 flex flex-col bg-white/5 backdrop-blur-md">
+        {/* Output */}
+        <div className="flex-1 border-b border-white/10 bg-black/70 text-green-400 font-mono p-3 overflow-auto rounded-tr-lg">
+          <pre>{output}</pre>
+        </div>
+
+        {/* AI Chatbot */}
+        <div className="flex-1 flex flex-col p-3">
+          <div className="flex-1 overflow-auto border border-white/10 rounded-lg p-3 mb-3 bg-black/30">
+            <p className="text-gray-500">AI Chatbot conversation...</p>
+          </div>
+          <div className="flex">
+            <input
+              type="text"
+              placeholder="Ask AI about your code..."
+              className="flex-1 border border-white/10 rounded-l-lg px-3 py-2 bg-black/50 text-white placeholder-gray-400 focus:outline-none"
+            />
+            <button className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 rounded-r-lg hover:opacity-90 transition">
+              Send
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

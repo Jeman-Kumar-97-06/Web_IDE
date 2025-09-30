@@ -1,40 +1,19 @@
-import React from "react";
 import { motion } from "framer-motion";
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-950 text-white px-6">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-900 to-gray-800 text-white">
       {/* Hero Section */}
-      <motion.div
-        initial={{ opacity: 0, y: -40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="text-center max-w-3xl"
-      >
-        <h1 className="text-5xl font-extrabold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text">
-          Execute.or
-        </h1>
-        <p className="text-lg text-gray-300 mb-8">
-          Run code in your browser. Compile, test, and optimize with AI-powered
-          suggestions.
-        </p>
-        <div className="flex gap-4 justify-center">
-          <a
-            href="#get-started"
-            className="px-6 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-600 font-semibold shadow-lg"
-          >
-            Get Started
-          </a>
-          <a
-            href="#features"
-            className="px-6 py-3 rounded-xl bg-gray-800 hover:bg-gray-700 font-semibold shadow-lg"
-          >
-            Learn More
-          </a>
-        </div>
-      </motion.div>
-
-      {/* Features */}
+      <header className="flex flex-col items-center justify-center flex-1 text-center px-6">
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-5xl font-bold mb-4"
+        >
+          Your AI-Powered Web Compiler
+        </motion.h1>
+           {/* Features */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -66,27 +45,51 @@ export default function LandingPage() {
           </div>
         ))}
       </motion.div>
-
-      {/* CTA */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="mt-24 text-center"
-        id="get-started"
-      >
-        <h2 className="text-3xl font-bold mb-4">Ready to start coding?</h2>
-        <p className="text-gray-400 mb-6">
-          Experience instant compilation and AI-powered code improvements.
-        </p>
-        <a
-          href="#"
-          className="px-8 py-4 rounded-xl bg-cyan-500 hover:bg-cyan-600 font-semibold shadow-lg"
+      <br/>
+      <br/>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="text-lg text-gray-300 mb-8 mt-10 max-w-2xl"
         >
-          Launch Compiler
-        </a>
-      </motion.div>
+          Write, analyze, and plan smarter with AI.  
+          An all-in-one platform for coding, understanding, and building projects.
+        </motion.p>
+
+        {/* Replaced 'Launch Compiler' with 3 feature buttons */}
+        <div className="flex space-x-4">
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            href="/editor"
+            className="px-6 py-3 bg-blue-500 rounded-xl shadow-lg hover:bg-blue-600"
+          >
+            Code Editor
+          </motion.a>
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            href="/explain"
+            className="px-6 py-3 bg-green-500 rounded-xl shadow-lg hover:bg-green-600"
+          >
+            Explain Code Snippet
+          </motion.a>
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            href="/plan"
+            className="px-6 py-3 bg-purple-500 rounded-xl shadow-lg hover:bg-purple-600"
+          >
+            Plan a Project
+          </motion.a>
+        </div>
+      </header>
+
+      {/* Footer */}
+      <footer className="p-4 text-center text-gray-400">
+        © {new Date().getFullYear()} Web Compiler AI. All rights reserved.
+      </footer>
     </div>
   );
 }
