@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link, Links } from "react-router-dom";
 
 export default function LandingPage() {
   return (
@@ -62,7 +63,7 @@ export default function LandingPage() {
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            href="/editor"
+            href="/home"
             className="px-6 py-3 bg-blue-500 rounded-xl shadow-lg hover:bg-blue-600"
           >
             Code Editor
@@ -70,10 +71,10 @@ export default function LandingPage() {
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            href="/explain"
+            href="/"
             className="px-6 py-3 bg-green-500 rounded-xl shadow-lg hover:bg-green-600"
           >
-            Explain Code Snippet
+            Explain/ Compare Code
           </motion.a>
           <motion.a
             whileHover={{ scale: 1.05 }}
