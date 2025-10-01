@@ -68,14 +68,14 @@ export default function LandingPage() {
           >
             Code Editor
           </motion.a>
-          <motion.a
+          {/* <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             href="/"
             className="px-6 py-3 bg-green-500 rounded-xl shadow-lg hover:bg-green-600"
           >
             Explain/ Compare Code
-          </motion.a>
+          </motion.a> */}
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
