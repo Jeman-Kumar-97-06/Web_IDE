@@ -39,6 +39,9 @@ async function runCode(language,code) {
             NetworkMode : "none",
             Memory : 128 * 1024 * 1024,
             CpuShares : 128,
+            SecurityOpt: [
+                `seccomp=${path.resolve(__dirname, "seccomp-profile.json")}`
+            ]
         },
     });
 
