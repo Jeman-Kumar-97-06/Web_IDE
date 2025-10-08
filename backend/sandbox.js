@@ -54,3 +54,4 @@ async function runCode(language,code) {
     return logs.toString("utf-8");
 };
 
+runCode('js','console.log("Jeman")')
