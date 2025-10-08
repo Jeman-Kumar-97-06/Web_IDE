@@ -11,6 +11,7 @@ async function runCode(language,code) {
         fs.mkdirSync(tempDir);
     }
     let fileName, image, cmd;
+    //Check the programming language of input:
     if (language === 'js') {
         fileName = 'code.js';
         image = "nodejs-sandbox";
@@ -45,8 +46,9 @@ async function runCode(language,code) {
         },
     });
 
+    //Start the container:
     await container.start();
-
+    //Print the logs of the container:
     const logs = await container.logs({stdout:true,stderr:true,follow:true});
     await container.remove({force:true});
     return logs.toString("utf-8");
