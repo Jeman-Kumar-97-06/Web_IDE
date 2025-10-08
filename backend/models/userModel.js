@@ -33,6 +33,7 @@ userSchema.statics.signup = async function(name, email,password){
     return user;
 };
 
+//Static login method: 
 userSchema.statics.login = async function(name,password) {
     //Find the user with the given name:
     const user = await this.findOne({name:name});
