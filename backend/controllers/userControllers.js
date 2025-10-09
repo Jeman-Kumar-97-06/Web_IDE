@@ -29,4 +29,5 @@ const signupUser = async (req,res) => {
     }
 };
 
+//Exporting login and signup functions:
 module.exports = {loginUser, signupUser};
