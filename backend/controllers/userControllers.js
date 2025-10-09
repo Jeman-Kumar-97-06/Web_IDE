@@ -17,6 +17,7 @@ const loginUser = async (req,res) => {
         return res.status(404).json({error:error.message});
     }
 };
+
 //Signup Controller:
 const signupUser = async (req,res) => {
     const {name,email,password} = req.body;
