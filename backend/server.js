@@ -7,8 +7,11 @@ const app  = exp();
 app.use(exp.json());
 app.use(cors());
 
+const uRts = require('./routes/users');
+const mRts = require('./routes');
+
 mong.connect(process.env.MONGOURL).then(()=>{
     app.listen(process.env.PORT,()=>{
         console.log("connected to db and listening to requests");
-    }).catch(err=>{console.log(err)});
+    d}).catch(err=>{console.log(err)});
 })

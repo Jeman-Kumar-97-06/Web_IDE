@@ -9,4 +9,5 @@ const {
 app.post('/login',loginUser);
 app.post('/signup',signupUser);
 
+//Import router to the server.js file
 module.exports = router;
