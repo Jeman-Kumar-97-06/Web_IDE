@@ -41,7 +41,7 @@ async function runCode(language,code) {
             Memory : 128 * 1024 * 1024,//allowed max memory
             CpuShares : 128,
             SecurityOpt: [
-                `seccomp=${path.resolve(__dirname, "seccomp-profile.json")}`
+                `seccomp=${path.resolve(__dirname, "seccomp-profile.json")}`//the seccomp file specifies permissions 
             ]
         },
     });
