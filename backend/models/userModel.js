@@ -25,6 +25,7 @@ userSchema.statics.signup = async function(name, email,password){
         throw Error("Email already Exists");
     }
     //Create a salt of length 10
+    //Create a salt of length 10
     const salt = await bcrypt.genSalt(10);
     //Add that salt to password to create a hash:
     const hash = await bcrypt.hash(password,salt);
@@ -50,3 +51,4 @@ userSchema.statics.login = async function(name,password) {
 };
 
 module.exports = mongoose.model('compuser',userSchema);
+//abcdefghijklmnopqrstuvwxyz
