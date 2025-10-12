@@ -11,14 +11,17 @@ const userSchema = new Schema({
 
 //Static Method to signup a user:
 userSchema.statics.signup = async function(name, email,password){
+
     //See if the email is valid:
     if (!validator.isEmail(email)){
         throw Error("Invalid Email!");
     }
+
     //See if the password is strong:
     if (!validator.isStrongPassword(password)){
         throw Error("Password is not strong enough!")
     }
+    
     //See if the email already exists : 
     const exists = await this.findOne({email});
     if (exists) {
