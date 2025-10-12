@@ -51,4 +51,3 @@ userSchema.statics.login = async function(name,password) {
 };
 
 module.exports = mongoose.model('compuser',userSchema);
-//abcdefghijklmnopqrstuvwxyz
