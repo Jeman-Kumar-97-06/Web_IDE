@@ -34,7 +34,7 @@ export default function HomePage() {
             {/* Home button */}
             <button
               onClick={() => navigate("/")}
-              className="cursor-pointer px-3 py-2 bg-[#FF9100] text-white text-sm hover:opacity-90 transition"
+              className="cursor-pointer px-3 py-2 bg-[#FF9100] text-black text-sm hover:opacity-90 transition"
             >
               <MdHomeFilled />
             </button>
@@ -46,7 +46,7 @@ export default function HomePage() {
                   key={lang}
                   className={`cursor-pointer px-3 py-1 font-bold text-sm transition ${
                     language === lang
-                      ? "bg-[#FF9100] text-white"
+                      ? "bg-[#FF9100] text-black"
                       : "bg-white/10 text-gray-300 hover:bg-white/20"
                   }`}
                   onClick={() => setLanguage(lang)}
@@ -119,7 +119,7 @@ export default function HomePage() {
               placeholder="Ask AI about your code..."
               className="flex-1 border border-white/10 px-3 py-2 bg-black/50 text-white placeholder-gray-400 focus:outline-none"
             />
-            <button className="bg-[#FF9100] text-white px-4 hover:opacity-90 transition">
+            <button className="bg-[#FF9100] text-black px-4 hover:opacity-90 transition">
               Send
             </button>
           </div>

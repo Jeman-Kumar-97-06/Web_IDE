@@ -50,7 +50,7 @@ export default function PlanPage() {
             onClick={handlePlan}
             className="mt-4 w-full py-2 bg-[#557c56] text-white hover:bg-green-500 hover:text-black cursor-pointer transition"
           >
-            🚀 Generate Project Plan
+            Generate Project Plan
           </button>
 
           {/* Output */}
