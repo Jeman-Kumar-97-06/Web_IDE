@@ -1,1 +1,33 @@
 @import 'tailwindcss';
+
+@font-face {
+    font-family: "coder";
+    src: url('./assets/fonts/coder.ttf');
+}
+
+@font-face {
+    font-family: 'codesaver';
+    src: url('./assets/fonts/CodeSaver-Regular.otf');
+}
+
+@font-face {
+    font-family: 'monocode';
+    src: url('./assets/fonts/Monocode-Regular-V01.02b.ttf');
+}
+
+@font-face {
+    font-family: 'unsteady';
+    src: url('./assets/fonts/Unsteady-Oversteer.otf');
+}
+
+body {
+    font-family: 'codesaver';
+}
+
+.landing-hero {
+    font-family: 'coder';
+}
+
+.ftitle {
+    font-family: 'codesaver';
+}

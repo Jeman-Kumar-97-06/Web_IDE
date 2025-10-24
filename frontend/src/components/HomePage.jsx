@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // <-- make sure you're using react-router
 import Editor from "@monaco-editor/react";
-import { House } from "lucide-react";
+import { MdHomeFilled } from "react-icons/md";
 
 export default function HomePage() {
   const [language, setLanguage] = useState("javascript");
@@ -34,9 +34,9 @@ export default function HomePage() {
             {/* Home button */}
             <button
               onClick={() => navigate("/")}
-              className="px-3 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 text-white text-sm hover:opacity-90 transition"
+              className="px-3 py-2 bg-gradient-to-r from-purple-500 to-blue-500 text-white text-sm hover:opacity-90 transition"
             >
-              <House />
+              <MdHomeFilled />
             </button>
 
             {/* Language Switcher */}
@@ -44,7 +44,7 @@ export default function HomePage() {
               {["javascript", "python", "c"].map((lang) => (
                 <button
                   key={lang}
-                  className={`px-3 py-1 rounded-lg text-sm transition ${
+                  className={`px-3 py-1 text-sm transition ${
                     language === lang
                       ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white"
                       : "bg-white/10 text-gray-300 hover:bg-white/20"
@@ -60,7 +60,7 @@ export default function HomePage() {
           {/* Right side: Upload + Run */}
           <div className="flex items-center space-x-2">
             {/* Upload */}
-            <label className="cursor-pointer px-3 py-1 rounded-lg bg-white/10 hover:bg-white/20 transition text-sm">
+            <label className="cursor-pointer px-3 py-1.5 bg-white/10 hover:bg-white/20 transition text-sm">
               📎 Upload
               <input
                 type="file"
@@ -79,7 +79,7 @@ export default function HomePage() {
             {/* Run */}
             <button
               onClick={handleRun}
-              className="px-4 py-1 rounded-lg bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:opacity-90 transition"
+              className="px-4 py-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:opacity-90 transition"
             >
               ▶ Run
             </button>
@@ -110,16 +110,16 @@ export default function HomePage() {
 
         {/* AI Chatbot */}
         <div className="flex-1 flex flex-col p-3">
-          <div className="flex-1 overflow-auto border border-white/10 rounded-lg p-3 mb-3 bg-black/30">
+          <div className="flex-1 overflow-auto border border-white/10 p-3 mb-3 bg-black/30">
             <p className="text-gray-500">AI Chatbot conversation...</p>
           </div>
           <div className="flex">
             <input
               type="text"
               placeholder="Ask AI about your code..."
-              className="flex-1 border border-white/10 rounded-l-lg px-3 py-2 bg-black/50 text-white placeholder-gray-400 focus:outline-none"
+              className="flex-1 border border-white/10 px-3 py-2 bg-black/50 text-white placeholder-gray-400 focus:outline-none"
             />
-            <button className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 rounded-r-lg hover:opacity-90 transition">
+            <button className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 hover:opacity-90 transition">
               Send
             </button>
           </div>

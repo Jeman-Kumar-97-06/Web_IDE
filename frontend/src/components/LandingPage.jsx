@@ -10,9 +10,9 @@ export default function LandingPage() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl font-bold mb-4"
+          className="landing-hero text-7xl font-bold mb-4"
         >
-          Your AI-Powered Web Compiler
+          C.O.D.E.R
         </motion.h1>
            {/* Features */}
       <motion.div
@@ -41,7 +41,7 @@ export default function LandingPage() {
             key={i}
             className="bg-gray-900 p-6 rounded-2xl shadow-lg hover:shadow-cyan-500/20 transition"
           >
-            <h3 className="text-xl font-bold mb-3 text-cyan-400">{f.title}</h3>
+            <h3 className="ftitle text-xl font-bold mb-3 text-cyan-400">{f.title}</h3>
             <p className="text-gray-400">{f.desc}</p>
           </div>
         ))}
@@ -68,14 +68,6 @@ export default function LandingPage() {
           >
             Code Editor
           </motion.a>
-          {/* <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href="/"
-            className="px-6 py-3 bg-green-500 rounded-xl shadow-lg hover:bg-green-600"
-          >
-            Explain/ Compare Code
-          </motion.a> */}
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
