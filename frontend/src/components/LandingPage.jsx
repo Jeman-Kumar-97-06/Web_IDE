@@ -39,7 +39,7 @@ export default function LandingPage() {
         ].map((f, i) => (
           <div
             key={i}
-            className="bg-gray-900 p-6 rounded-2xl shadow-lg hover:shadow-cyan-500/20 transition"
+            className="bg-gray-900 p-6 shadow-lg hover:shadow-cyan-500/20 transition"
           >
             <h3 className="ftitle text-xl font-bold mb-3 text-cyan-400">{f.title}</h3>
             <p className="text-gray-400">{f.desc}</p>
@@ -64,7 +64,7 @@ export default function LandingPage() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             href="/home"
-            className="px-6 py-3 bg-blue-500 rounded-xl shadow-lg hover:bg-blue-600"
+            className="px-6 py-3 bg-blue-500 shadow-lg hover:bg-blue-600"
           >
             Code Editor
           </motion.a>
@@ -72,7 +72,7 @@ export default function LandingPage() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             href="/plan"
-            className="px-6 py-3 bg-purple-500 rounded-xl shadow-lg hover:bg-purple-600"
+            className="px-6 py-3 bg-purple-500 shadow-lg hover:bg-purple-600"
           >
             Plan a Project
           </motion.a>
