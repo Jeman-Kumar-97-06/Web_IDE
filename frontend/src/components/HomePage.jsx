@@ -34,7 +34,7 @@ export default function HomePage() {
             {/* Home button */}
             <button
               onClick={() => navigate("/")}
-              className="px-3 py-2 bg-gradient-to-r from-purple-500 to-blue-500 text-white text-sm hover:opacity-90 transition"
+              className="cursor-pointer px-3 py-2 bg-[#FF9100] text-white text-sm hover:opacity-90 transition"
             >
               <MdHomeFilled />
             </button>
@@ -44,9 +44,9 @@ export default function HomePage() {
               {["javascript", "python", "c"].map((lang) => (
                 <button
                   key={lang}
-                  className={`px-3 py-1 text-sm transition ${
+                  className={`cursor-pointer px-3 py-1 font-bold text-sm transition ${
                     language === lang
-                      ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white"
+                      ? "bg-[#FF9100] text-white"
                       : "bg-white/10 text-gray-300 hover:bg-white/20"
                   }`}
                   onClick={() => setLanguage(lang)}
@@ -79,7 +79,7 @@ export default function HomePage() {
             {/* Run */}
             <button
               onClick={handleRun}
-              className="px-4 py-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:opacity-90 transition"
+              className="cursor-pointer px-4 py-1 bg-[#557C56] text-white hover:bg-green-500 hover:text-black transition"
             >
               ▶ Run
             </button>
@@ -119,7 +119,7 @@ export default function HomePage() {
               placeholder="Ask AI about your code..."
               className="flex-1 border border-white/10 px-3 py-2 bg-black/50 text-white placeholder-gray-400 focus:outline-none"
             />
-            <button className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 hover:opacity-90 transition">
+            <button className="bg-[#FF9100] text-white px-4 hover:opacity-90 transition">
               Send
             </button>
           </div>

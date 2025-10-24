@@ -22,12 +22,12 @@ export default function PlanPage() {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white flex flex-col">
       {/* Header */}
       <div className="flex items-center justify-between p-4 border-b border-white/10 bg-black/30">
-        <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
+        <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#557c56] to-[#FF9100]">
           Plan a Project
         </h1>
         <button
           onClick={() => navigate("/")}
-          className="px-3 py-2 bg-gradient-to-r from-purple-500 to-blue-500 text-white text-sm hover:opacity-90 transition"
+          className="px-3 py-2 bg-[#FF9100] text-white text-sm hover:opacity-90 transition"
         >
           <MdHomeFilled />
         </button>
@@ -48,7 +48,7 @@ export default function PlanPage() {
 
           <button
             onClick={handlePlan}
-            className="mt-4 w-full py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:opacity-90 transition"
+            className="mt-4 w-full py-2 bg-[#557c56] text-white hover:bg-green-500 hover:text-black cursor-pointer transition"
           >
             🚀 Generate Project Plan
           </button>
