@@ -12,6 +12,7 @@
   "dependencies": {
     "bcrypt": "^6.0.0",
     "dockernode": "^0.1.0",
+    "dockerode": "^4.0.9",
     "dotenv": "^17.2.3",
     "google-auth-library": "^10.4.0",
     "jsonwebtoken": "^9.0.2",

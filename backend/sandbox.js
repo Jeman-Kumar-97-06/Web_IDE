@@ -1,4 +1,4 @@
-const Docker      = require('dockernode');
+const Docker      = require('dockerode');
 const fs          = require('fs');
 const { Network } = require('inspector/promises');
 const path        = require('path');
@@ -20,7 +20,7 @@ async function runCode(language,code) {
         cmd = ["node","/app/code.js"];
     } else if (language === "python") {
         fileName = 'code.py';
-        image = "python-sanbox";
+        image = "python-sandbox";
         cmd = ["python3","/app/code.py"];
     } else if (language === "c") {
         fileName = 'code.c';
@@ -54,6 +54,7 @@ async function runCode(language,code) {
     //Print the logs of the container:
     const logs = await container.logs({stdout:true,stderr:true,follow:true});
     await container.remove({force:true});
+    console.log(logs.toString('utf-8'))
     return logs.toString("utf-8");
 };
 
