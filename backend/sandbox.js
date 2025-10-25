@@ -51,11 +51,12 @@ async function runCode(language,code) {
 
     //Start the container:
     await container.start();
+    await container.wait();
     //Print the logs of the container:
-    const logs = await container.logs({stdout:true,stderr:true,follow:true});
+    const logs = await container.logs({stdout:true,stderr:true,follow:false});
     await container.remove({force:true});
-    console.log(logs.toString('utf-8'))
+    const output = (logs.toString('utf-8'));
     return logs.toString("utf-8");
 };
 
-runCode('js','console.log("Jeman")')
+(async () => {console.log(await runCode('js','console.log("Jeman")'))})()
